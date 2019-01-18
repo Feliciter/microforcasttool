@@ -1,0 +1,116 @@
+extends layout
+
+
+block content
+
+    nav.navbar.navbar-dark.sticky-top.bg-dark.flex-md-nowrap.p-0
+      a.navbar-brand.col-sm-3.col-md-2.mr-0(href='#') microforcast sales
+      |       
+      
+      |       
+      ul.navbar-nav.px-3
+        li.nav-item.text-nowrap
+          a.nav-link(href='#') Sign out
+    |     
+    .container-fluid
+      .row
+        nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+          .sidebar-sticky
+            ul.nav.flex-column
+              //- li.nav-item
+              //-   a.nav-link.active(href='#')
+              //-     span(data-feather='home')
+              //-     |                   Dashboard 
+              //-     span.sr-only (current)
+              //- |               
+              //- li.nav-item
+              //-   a.nav-link(href='#')
+              //-     span(data-feather='file')
+              //-     |                   Orders
+              //- |               
+              //- li.nav-item
+              //-   a.nav-link(href='#')
+              //-     span(data-feather='shopping-cart')
+              //-     |                   Products
+              //- |               
+              //- li.nav-item
+              //-   a.nav-link(href='#')
+              //-     span(data-feather='users')
+              //-     |                   Customers
+              //- |               
+              //- li.nav-item
+              //-   a.nav-link(href='#')
+              //-     span(data-feather='bar-chart-2')
+              //-     |                   Reports
+              //- |               
+              //- li.nav-item
+              //-   a.nav-link(href='#')
+              //-     span(data-feather='layers')
+              //-     |                   Integrations
+            |             
+            h6.sidebar-heading.d-flex.justify-content-between.align-items-center.px-3.mt-4.mb-1.text-muted
+              span Панель загрузки
+            br
+              
+            |             
+            ul.nav.flex-column.mb-2
+              li.nav-item                
+                  
+                form(name="uploader", action="/fileupload", method="post", enctype="multipart/form-data")       
+                    label(for='profile_src') 1.Выбрать файл
+                    div.upldfl
+                        input#profile_src(type="file",name="profilesrc", placeholder='формат файла .csv или .txt', required,  accept=".csv,.txt")
+                        p
+                        input(type="submit",value="Загрузить")  
+
+              li.nav-item
+                span(data-feather='layers')
+                br
+                form#mva( name="converter", action="/converter", method="post", enctype="multipart/form-data")
+                    label 2.Укажите окно SMA
+                    div.setmva
+                        input(type="number", name="setwindow", placeholder='например:21', id="setwindow")
+                        p
+                        input(type="submit", value="Построить")   
+              |               
+              //- li.nav-item
+              //-   a.nav-link(href='#')
+              //-     span(data-feather='file-text')
+              //-     |                   Social engagement
+              //- |               
+              //- li.nav-item
+              //-   a.nav-link(href='#')
+              //-     span(data-feather='file-text')
+              //-     |                   Year-end sale
+        |         
+        main.col-md-9.ml-sm-auto.col-lg-10.pt-3.px-4(role='main')
+          .d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pb-2.mb-3.border-bottom
+            h1.h2 Dashboard
+            |             
+            .btn-toolbar.mb-2.mb-md-0
+              .btn-group.mr-2
+                button.btn.btn-sm.btn-outline-secondary Share
+                |                 
+                button.btn.btn-sm.btn-outline-secondary Export
+              |               
+              //- button.btn.btn-sm.btn-outline-secondary.dropdown-toggle
+              //-   span(data-feather='calendar')
+              //-   |                 This week
+          |           
+         
+          |           
+          h2 Sales
+          |           
+          //- canvas
+          #container(style='width:100%; height:400px;')
+
+          table#tableout.table.table-striped.table-bordered(style='width:100%')
+            thead
+              tr
+                th week
+                th sales
+                th mvAvrg
+                th setD
+                th year
+                th weekofyear
+                th month 
