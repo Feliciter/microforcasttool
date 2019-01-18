@@ -2,4 +2,4 @@
 
 Прогноз продаж
 
-Javascript; gulp;node.js;highcharts; bootstrap
+@Javascript; gulp;node.js;highcharts; bootstrap
